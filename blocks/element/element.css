@@ -1,0 +1,14 @@
+.element {
+  width: 282px;
+  background-color: #FFFFFF;
+  color: #000000;
+  border-radius: 3%;
+  overflow: hidden;
+}
+
+/* @media screen and (max-width:665px) {
+  .elements {
+    grid-template-columns: 282px;
+    
+  }
+} */

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mесто</title>
+  <link rel="stylesheet" href="./pages/index.css">
+</head>
+
+<body class="page">
+  <header class="header">
+    <img class="logo header__logo" src="./images/Vector.svg" alt="Логотип">
+  </header>
+
+  <main class="content">
+    <section class="profile">
+      <img class="profile__avatar" src="./images/image.png" alt="Аватар">
+      <div class="profile__info">
+        <h1 class="profile__name">Жак-Ив Кусто</h1>
+        <button class="profile__edit-button" type="button"></button>
+        <p class="profile__working">Исследователь океана</p>
+      </div>
+      <button class="profile__add-button" type="button"></button>
+    </section>
+
+    <section class="elements">
+      <article class="element">
+        <img class="element__image" src="./images/Kamchatka Peninsula, Russia.jpg" alt="Полуостров Камчатка, Россия">
+        <div class="element__group">
+          <h2 class="element__text">Камчатка</h2>
+          <button class="element__vector" type="button"></button>
+        </div>
+      </article>
+
+      <article class="element">
+        <img class="element__image" src="./images/Роза Хутор, Эстосадок, Краснодарский край, Россия.jpg"
+          alt="Роза Хутор, Эстосадок, Краснодарский край, Россия">
+        <div class="element__group">
+          <h2 class="element__text">Эстосадок</h2>
+          <button class="element__vector" type="button"></button>
+        </div>
+      </article>
+
+      <article class="element">
+        <img class="element__image" src="./images/Ольхо́н, Irkutsk Oblast, Russia.jpg"
+          alt="Ольхо́н, Irkutsk Oblast, Russia">
+        <div class="element__group">
+          <h2 class="element__text">Ольхон</h2>
+          <button class="element__vector" type="button"></button>
+        </div>
+      </article>
+
+      <article class="element">
+        <img class="element__image" src="./images/Гижгит, Кабардино-Балкарская Республика, Россия.jpg"
+          alt="Гижгит, Кабардино-Балкарская Республика, Россия">
+        <div class="element__group">
+          <h2 class="element__text">Гижгит</h2>
+          <button class="element__vector" type="button"></button>
+        </div>
+      </article>
+
+      <article class="element">
+        <img class="element__image" src="./images/Lipetsk Oblast, Россия.jpg" alt="Липецкая область, Россия">
+        <div class="element__group">
+          <h2 class="element__text">Липецк</h2>
+          <button class="element__vector" type="button"></button>
+        </div>
+      </article>
+
+      <article class="element">
+        <img class="element__image" src="./images/Телецкое озеро, Россия.jpg" alt="Телецкое озеро, Россия">
+        <div class="element__group">
+          <h2 class="element__text">Телецкое озеро</h2>
+          <button class="element__vector" type="button"></button>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
+  </footer>
+
+<!-- POPUP -->
+<div class="popup">
+  <div class="popup__container">
+    <button class="popup__close-button"></button>
+    <h2 class="popup__title">Редактировать профиль</h2>
+    <form class="popup__form" name="popup__form">
+      <input class="popup__input popup__input_data_name" type="text" name="name" placeholder="Жак-Ив Кусто" required>
+      <input class="popup__input popup__input_data_working" type="text" name="working" placeholder="Исследователь океана"
+        required>
+      <button class="popup__save-form" type="submit" aria-label="Сохранение изменений">Сохранить</button>
+    </form>
+  </div>
+</div>
+
+<script src="./scripts/index.js"></script>
+</body>
+</html>

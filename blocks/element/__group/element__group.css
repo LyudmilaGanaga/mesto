@@ -1,0 +1,14 @@
+.element__group {
+  width: 246px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 28px auto 31px;
+  height: 23px;
+}
+
+@media screen and (max-width:320px) {
+  .element__group {
+    margin-top: 26px;
+  }
+}
