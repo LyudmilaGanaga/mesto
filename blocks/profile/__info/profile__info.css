@@ -1,7 +1,7 @@
 .profile__info {
   color: #FFFF;
   list-style-type: none;
-  width: 336px;
+  max-width: 336px;
   margin-left: 30px;
   display: flex;
   flex-direction: row;
@@ -10,7 +10,7 @@
 
 @media screen and (max-width:999px) {
   .profile__info {
-    width: 300px;
+    max-width: 300px;
   }
 }
 
@@ -25,7 +25,7 @@
 
 @media screen and (max-width:525px) {
   .profile__info {
-    width: 282px;
+    max-width: 282px;
     margin: 27px 0 0;
   }
 }

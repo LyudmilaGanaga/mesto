@@ -9,12 +9,14 @@ const elementProfileWorking = document.querySelector(".profile__working");
 
 // открыть popup
 elementOpenButton.addEventListener("click", () => {
-  elementPopup.classList.add("popup__opened");
+  elementPopup.classList.add("popup_opened");
+  popupName.value = elementProfileName.textContent;
+  popupWorking.value = elementProfileWorking.textContent;
 });
 
 // закрыть popup
 elementCloseButton.addEventListener("click", () => {
-  elementPopup.classList.remove("popup__opened");
+  elementPopup.classList.remove("popup_opened");
 });
 
 // сохранить изменения
@@ -22,5 +24,5 @@ elementPopupForm.addEventListener("submit", (submitFormHandler) => {
   submitFormHandler.preventDefault();
   elementProfileName.textContent = popupName.value;
   elementProfileWorking.textContent = popupWorking.value;
-  elementPopup.classList.remove("popup__opened");
+  elementPopup.classList.remove("popup_opened");
 });
