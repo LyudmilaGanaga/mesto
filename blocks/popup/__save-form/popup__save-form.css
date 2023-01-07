@@ -11,6 +11,7 @@
   color: #FFFFFF;
   border: none;
   transition: .5s linear;
+  cursor: pointer;
 }
 
 @media screen and (max-width:525px) {

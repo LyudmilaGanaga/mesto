@@ -9,5 +9,7 @@
   .popup__form {
     max-width: 238px;
     align-items: center;
+    padding-left: 22px;
+    padding-right: 22px;
   }
 }

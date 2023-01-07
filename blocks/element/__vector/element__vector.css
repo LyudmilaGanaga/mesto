@@ -9,4 +9,10 @@
   min-width: 22px;
   height: 19px;
   padding: 0;
+  transition: .8 linear;
+  cursor: pointer;
+}
+
+.element__vector:hover {
+  opacity: .5;
 }
