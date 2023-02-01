@@ -25,57 +25,10 @@
       <button class="profile__add-button" type="button"></button>
     </section>
 
+    <!-- карты -->
     <section class="elements">
-      <article class="element">
-        <img class="element__image" src="./images/KamchatkaPeninsula,Russia.jpg" alt="Полуостров Камчатка, Россия">
-        <div class="element__group">
-          <h2 class="element__text">Камчатка</h2>
-          <button class="element__vector" type="button"></button>
-        </div>
-      </article>
-
-      <article class="element">
-        <img class="element__image" src="./images/RosaKhutor,Estosadok,KrasnodarTerritor,Russia.jpg"
-          alt="Роза Хутор, Эстосадок, Краснодарский край, Россия">
-        <div class="element__group">
-          <h2 class="element__text">Эстосадок</h2>
-          <button class="element__vector" type="button"></button>
-        </div>
-      </article>
-
-      <article class="element">
-        <img class="element__image" src="./images/Olkhon,IrkutskObast,Russia.jpg"
-          alt="Ольхо́н, Irkutsk Oblast, Russia">
-        <div class="element__group">
-          <h2 class="element__text">Ольхон</h2>
-          <button class="element__vector" type="button"></button>
-        </div>
-      </article>
-
-      <article class="element">
-        <img class="element__image" src="./images/Gizhgit,Kabardin-BalkarianRepublic,Russia.jpg"
-          alt="Гижгит, Кабардино-Балкарская Республика, Россия">
-        <div class="element__group">
-          <h2 class="element__text">Гижгит</h2>
-          <button class="element__vector" type="button"></button>
-        </div>
-      </article>
-
-      <article class="element">
-        <img class="element__image" src="./images/LipetskOblast,Russia.jpg" alt="Липецкая область, Россия">
-        <div class="element__group">
-          <h2 class="element__text">Липецк</h2>
-          <button class="element__vector" type="button"></button>
-        </div>
-      </article>
-
-      <article class="element">
-        <img class="element__image" src="./images/Teletskoyelake,Russia.jpg" alt="Телецкое озеро, Россия">
-        <div class="element__group">
-          <h2 class="element__text">Телецкое озеро</h2>
-          <button class="element__vector" type="button"></button>
-        </div>
-      </article>
+      <ul class="elements__list">
+      </ul>
     </section>
   </main>
 
@@ -83,12 +36,11 @@
     <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
   </footer>
 
-  <!-- POPUP -->
-  <div class="popup">
+  <div class="popup" id="popup_edit-profile">
     <div class="popup__container">
       <button class="popup__close-button" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form" name="popup-form">
+      <form class="popup__form popup__edit-form">
         <input class="popup__input popup__input_data_name" type="text" name="name" placeholder="Жак-Ив Кусто" required>
         <input class="popup__input popup__input_data_working" type="text" name="working"
           placeholder="Исследователь океана" required>
@@ -96,6 +48,39 @@
       </form>
     </div>
   </div>
+
+  <div class="popup" id="popup_new-cards">
+    <div class="popup__container">
+      <button class="popup__close-button" type="button" aria-label="Закрыть всплывающее окно"></button>
+      <h2 class="popup__title">Новое место</h2>
+      <form class="popup__form popup__form-cards">
+        <input class="popup__input popup__input_data_place" type="text" name="place" placeholder="Название" required>
+        <input class="popup__input popup__input_data_link" type="text" name="link" placeholder="Ссылка на картинку"
+          required>
+        <button class="popup__save-form" type="submit" aria-label="Сохранение изменений">Создать</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup popup__background-blak" id="popup__image-big">
+
+    <figure class="popup__image-container">
+      <button class="popup__close-button" type="button" aria-label="Закрытие всплывающего окна"></button>
+      <img class="popup__image" src="#" alt="">
+      <figcaption class="popup__image-text"></figcaption>
+    </figure>
+  </div>
+
+  <template id="card-template">
+    <li class="element">
+      <button class="element__delete" type="button"></button>
+      <img class="element__image" src="#" alt="">
+      <div class="element__group">
+        <h2 class="element__text"></h2>
+        <button class="element__like" type="button"></button>
+      </div>
+    </li>
+  </template>
 
   <script src="./scripts/index.js"></script>
 </body>

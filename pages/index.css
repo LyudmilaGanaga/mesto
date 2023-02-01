@@ -17,12 +17,14 @@
 @import url(../blocks/profile/__add-button/profile__add-button.css);
 
 /* Секция элементы */
-@import url(../blocks/elements/elements.css);
 @import url(../blocks/element/element.css);
+@import url(../blocks/element/__list/elements__list.css);
 @import url(../blocks/element/__image/element__image.css);
 @import url(../blocks/element/__text/element__text.css);
 @import url(../blocks/element/__group/element__group.css);
-@import url(../blocks/element/__vector/element__vector.css);
+@import url(../blocks/element/__like/element__like.css);
+@import url(../blocks/element/__like/_active/element__like_active.css);
+@import url(../blocks/element/__delete/element__delete.css);
 
 /* Footer */
 @import url(../blocks/footer/__copyright/footer__copyright.css);
@@ -38,3 +40,10 @@
 @import url(../blocks/popup/__save-form/popup__save-form.css);
 
 @import url(../blocks/popup/_opened/popup_opened.css);
+
+@import url(../blocks/popup/_background-blak/popup__background-blak.css);
+
+@import url(../blocks/popup/__image/popup__image.css);
+@import url(../blocks/popup/__image-container/popup__image-container.css);
+@import url(../blocks/popup/__image-text/popup__image-text.css);
+

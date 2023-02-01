@@ -12,6 +12,7 @@
   object-fit: contain;
   transition: .5s linear;
   cursor: pointer;
+  background-size: cover;
 }
 
 .popup__close-button:hover {

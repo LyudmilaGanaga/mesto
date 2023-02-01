@@ -1,4 +1,4 @@
-.element__vector {
+.element__like {
   fill: #000000;
   background-image: url(../../../images/Vector\ \(3\).svg);
   margin: 0;
@@ -13,6 +13,6 @@
   cursor: pointer;
 }
 
-.element__vector:hover {
+.element__like:hover {
   opacity: .5;
 }
