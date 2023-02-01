@@ -3,10 +3,12 @@
   font-size: 18px;
   line-height: 22px;
   max-width: 336px;
-  margin: 10px 0 0;
+  margin: 0;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  grid-area: working;
+  color: #FFFFFF;
 }
 
 @media screen and (max-width:999px) {
@@ -19,5 +21,6 @@
   .profile__working {
     font-size: 14px;
     line-height: 16px;
+    padding-right: 8px;
   }
 }
