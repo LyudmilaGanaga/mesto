@@ -38,7 +38,7 @@ const elementBigImagePopup = document.querySelector('#popup__image-big');
 // кнопка редактировать профиль
 const elementOpenButtonProfile = document.querySelector('.profile__edit-button');
 // кнопка закрытия
-const elementCloseButton = document.querySelectorAll('.popup__close-button');
+const elementsCloseButton = document.querySelectorAll('.popup__close-button');
 // кнопка добавления карточки
 const elementAddCardsButton = document.querySelector('.profile__add-button');
 //секция с карточками
@@ -77,12 +77,23 @@ function openPopup(evt) {
 function closePopup(evt) {
   evt.classList.remove('popup_opened');
 }
-// сохранить изменения
+// сохранение изменений
 elementPopupEditForm.addEventListener('submit', (submitFormHandler) => {
   submitFormHandler.preventDefault();
   elementProfileName.textContent = popupName.value;
   elementProfileWorking.textContent = popupWorking.value;
-  elementEditProfilePopup.classList.remove('popup_opened');
+  closePopup(elementEditProfilePopup);
+});
+
+// Функция отображения заполненных данных пользователя в профиле
+function saveProfileData() {
+  popupName.value = elementProfileName.textContent;
+  popupWorking.value = elementProfileWorking.textContent;
+}
+
+elementOpenButtonProfile.addEventListener('click', () => {
+  openPopup(elementEditProfilePopup);
+  saveProfileData();
 });
 
 // Функции карточек, удалениe карточек, 
@@ -116,7 +127,6 @@ const cardDelete = (evt) => {
 const likeCards = (evt) => {
   evt.target.classList.toggle('element__like_active');
 }
-
 // рендер карточек
 function renderCard() {
   initialCards.forEach((item) => {
@@ -142,21 +152,12 @@ renderCard();
 
 // Слушатели открытия, закрытия попап
 // слушатель открытия попап
-elementOpenButtonProfile.addEventListener('click', () => {
-  openPopup(elementEditProfilePopup);
-});
-
 elementAddCardsButton.addEventListener('click', () => {
   openPopup(elementAddCardsPopup);
 });
 
 // слушатели закрытия попапов
-elementCloseButton.forEach((evt) => {
+elementsCloseButton.forEach((evt) => {
   const popupElement = evt.closest('.popup');
   evt.addEventListener('click', () => closePopup(popupElement))
 });
-
-
-
-
-
