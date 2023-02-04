@@ -1,41 +1,45 @@
 // Функция ответсвенная за включение валидации всех форм
 const formValidation = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__save-form',
-  inactiveButtonClass: 'popup__save-form_inactive',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_visible',
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__save-form",
+  inactiveButtonClass: "popup__save-form_inactive",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__input-error_visible",
 };
 
 // Слушатели
-function setEventListeners(formSelector) {
-  const inputList = Array.from(formSelector.querySelectorAll(formValidation.inputSelector));
-  const submitButton = formSelector.querySelector(formValidation.submitButtonSelector);
+function setEventListeners(formSelector, formValidation) {
+  const inputList = Array.from(
+    formSelector.querySelectorAll(formValidation.inputSelector)
+  );
+  const submitButton = formSelector.querySelector(
+    formValidation.submitButtonSelector
+  );
 
-  toggleButtonState(inputList, submitButton);
+  toggleButtonState(inputList, submitButton, formValidation);
 
   inputList.forEach((inputSelector) => {
     inputSelector.addEventListener("input", () => {
-      checkInputValidity(formSelector, inputSelector);
-      toggleButtonState(inputList, submitButton);
+      checkInputValidity(formSelector, inputSelector, formValidation);
+      toggleButtonState(inputList, submitButton, formValidation);
     });
   });
 }
+
 // Функция переключения внешнего вида кнопки
-function toggleButtonState(inputList, buttonElement) {
+function toggleButtonState(inputList, submitButtonSelector, formValidation) {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(formValidation.inactiveButtonClass);
-    buttonElement.setAttribute("disabled", true);
+    submitButtonSelector.classList.add(formValidation.inactiveButtonClass);
+    submitButtonSelector.setAttribute("disabled", true);
   } else {
-    buttonElement.classList.remove(formValidation.inactiveButtonClass);
-    buttonElement.removeAttribute("disabled", false);
+    submitButtonSelector.classList.remove(formValidation.inactiveButtonClass);
+    submitButtonSelector.removeAttribute("disabled");
   }
 }
 // Функции ошибок
-
 // Выдаёт ошибку
-function showInputError(formSelector, inputSelector, errorMessage) {
+function showInputError(formSelector, inputSelector, formValidation, errorMessage) {
   const errorElement = formSelector.querySelector(`.${inputSelector.id}-error`);
 
   inputSelector.classList.add(formValidation.inputErrorClass);
@@ -44,7 +48,7 @@ function showInputError(formSelector, inputSelector, errorMessage) {
 }
 
 // Удаление ошибки
-function hideInputError(formSelector, inputSelector) {
+function hideInputError(formSelector, inputSelector, formValidation) {
   const errorElement = formSelector.querySelector(`.${inputSelector.id}-error`);
 
   inputSelector.classList.remove(formValidation.inputErrorClass);
@@ -53,18 +57,18 @@ function hideInputError(formSelector, inputSelector) {
 }
 
 // Функция проверяет есть валидность или нет и отображает ошибку
-function checkInputValidity(formSelector, inputSelector) {
+function checkInputValidity(formSelector, inputSelector, formValidation) {
   if (!inputSelector.checkValidity()) {
     showInputError(
       formSelector,
       inputSelector,
+      formValidation,
       inputSelector.validationMessage
     );
   } else {
-    hideInputError(formSelector, inputSelector);
+    hideInputError(formSelector, inputSelector, formValidation);
   }
 }
-
 
 // ПРОВЕРКИ
 function hasInvalidInput(inputList) {
@@ -73,12 +77,13 @@ function hasInvalidInput(inputList) {
   });
 }
 
-
-function enableValidation() {
-  const formList = Array.from(document.querySelectorAll(formValidation.formSelector));
+function enableValidation(formValidation) {
+  const formList = Array.from(
+    document.querySelectorAll(formValidation.formSelector)
+  );
 
   formList.forEach((formSelector) => {
-    setEventListeners(formSelector);
+    setEventListeners(formSelector, formValidation);
   });
 }
 
