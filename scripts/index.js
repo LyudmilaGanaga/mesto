@@ -84,8 +84,7 @@ function closePopup(evt) {
 // Функция закрытия попапа кликом на оверлей
 document.addEventListener('click', function(evt) {
   if (evt.target.classList.contains('popup')) {
-    const openPopup = document.querySelector('.popup_opened');
-    closePopup(openPopup);
+    closePopup(evt.target);
   }
 });
 
