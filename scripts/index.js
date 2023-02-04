@@ -67,16 +67,33 @@ const popupDataLink = elementAddCardsPopup.querySelector('.popup__input_data_lin
 // темплейт
 const cardTemplate = document.querySelector('#card-template').content.querySelector('.element');
 
-
 // Открытие, закрытие, сохранение изменений
 // Функция открытия попап
 function openPopup(evt) {
+  document.addEventListener('keydown', closePopupEscape);
   evt.classList.add('popup_opened');
 }
 // функция закртия попап
 function closePopup(evt) {
+  document.addEventListener('keydown', closePopupEscape);
   evt.classList.remove('popup_opened');
 }
+
+// Функция закрытия попапа кликом на оверлей
+document.addEventListener('click', function(evt) {
+  if (evt.target.classList.contains('popup')) {
+    evt.target.classList.remove('popup_opened');
+  }
+});
+
+// Функция закрытия попапа по кнопке Escape
+function closePopupEscape(evt) {
+  if (evt.key ==='Escape') {
+    const openPopup = document.querySelector('.popup_opened') 
+    closePopup(openPopup);
+  }
+}    
+
 // сохранение изменений
 elementPopupEditForm.addEventListener('submit', (submitFormHandler) => {
   submitFormHandler.preventDefault();
@@ -94,9 +111,10 @@ function saveProfileData() {
 elementOpenButtonProfile.addEventListener('click', () => {
   openPopup(elementEditProfilePopup);
   saveProfileData();
+  
 });
 
-// Функции карточек, удалениe карточек, 
+// Функции карточек, удалениe карточек, функция с disabled фото
 // Функция карточек
 function sectionCards(cards) {
   const templateCardsElement = cardTemplate.cloneNode(true);
@@ -150,11 +168,16 @@ renderCard();
   closePopup(elementAddCardsPopup);
 });
 
-// Слушатели открытия, закрытия попап
-// слушатель открытия попап
-elementAddCardsButton.addEventListener('click', () => {
+// функция открытия с disabled для фото
+function openPopupAddCards() {
   openPopup(elementAddCardsPopup);
-});
+  formAddCards.reset();
+  const buttonSubmit = formAddCards.elements.save;
+  buttonSubmit.classList.add('popup__save-form_inactive');
+  buttonSubmit.setAttribute('disabled', true);
+}
+// слушатель для функции открытия с disabled для фото
+elementAddCardsButton.addEventListener('click', openPopupAddCards);
 
 // слушатели закрытия попапов
 elementsCloseButton.forEach((evt) => {

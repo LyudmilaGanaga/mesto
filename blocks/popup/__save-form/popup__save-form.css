@@ -1,17 +1,19 @@
 .popup__save-form {
   height: 50px;
   padding: 0;
-  margin-top: 45px;
-  margin-bottom: 36px;
-  border-radius: 2px;
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
   background: #000000;
   color: #FFFFFF;
-  border: none;
+  border: 1px solid #000000;
   transition: .5s linear;
   cursor: pointer;
+  border-radius: 2px;
+}
+
+.popup__save-form:hover {
+  opacity: .8;
 }
 
 @media screen and (max-width:525px) {
@@ -22,8 +24,4 @@
     line-height: 17px;
     margin-bottom: 25px;
   }
-}
-
-.popup__save-form:hover {
-  opacity: .8;
 }
