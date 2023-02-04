@@ -70,26 +70,31 @@ const cardTemplate = document.querySelector('#card-template').content.querySelec
 // Открытие, закрытие, сохранение изменений
 // Функция открытия попап
 function openPopup(evt) {
-  document.addEventListener('keydown', closePopupEscape);
   evt.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupEscape);
+  
 }
 // функция закртия попап
 function closePopup(evt) {
-  document.addEventListener('keydown', closePopupEscape);
   evt.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupEscape);
+  
 }
 
 // Функция закрытия попапа кликом на оверлей
 document.addEventListener('click', function(evt) {
   if (evt.target.classList.contains('popup')) {
-    evt.target.classList.remove('popup_opened');
+    const openPopup = document.querySelector('.popup_opened');
+    closePopup(openPopup);
   }
 });
+
+
 
 // Функция закрытия попапа по кнопке Escape
 function closePopupEscape(evt) {
   if (evt.key ==='Escape') {
-    const openPopup = document.querySelector('.popup_opened') 
+    const openPopup = document.querySelector('.popup_opened');
     closePopup(openPopup);
   }
 }    

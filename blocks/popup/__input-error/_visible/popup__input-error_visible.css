@@ -1,4 +1,4 @@
 .popup__input-error_visible {
   opacity: 1;
-  border-bottom-color: #FF0000;
+  /* border-bottom-color: #FF0000; */
 }
