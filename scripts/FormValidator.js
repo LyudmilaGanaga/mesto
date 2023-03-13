@@ -6,9 +6,8 @@ export default class FormValidator {
     this._inputList = Array.from(
       this._formElement.querySelectorAll(this._formValidation.inputSelector)
     );
-    this._submitButton = this._formElement.querySelector(
-      this._formValidation.submitButtonSelector
-    );
+    this._buttonSubmit = this._formElement.querySelector(
+      this._formValidation.submitButtonSelector);
   }
 
   // проверка валидности
@@ -46,15 +45,15 @@ export default class FormValidator {
   // переключение внешнего вида кнопки в зависимости от ошибки
   _toggleButtonState() {
     if (this._hasInvalidInput()) {
-      this._submitButton.classList.add(
+      this._buttonSubmit.classList.add(
         this._formValidation.inactiveButtonClass
       );
-      this._submitButton.disabled = true;
+      this._buttonSubmit.disabled = true;
     } else {
-      this._submitButton.classList.remove(
+      this._buttonSubmit.classList.remove(
         this._formValidation.inactiveButtonClass
       );
-      this._submitButton.disabled = false;
+      this._buttonSubmit.disabled = false;
     }
   }
 
@@ -67,6 +66,14 @@ export default class FormValidator {
         this._checkInputValidity(evt);
         this._toggleButtonState();
       });
+    });
+  }
+  
+  resetValidation() {
+    this._toggleButtonState(); 
+
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement) 
     });
   }
 

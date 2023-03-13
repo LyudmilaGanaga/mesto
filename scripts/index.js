@@ -106,7 +106,7 @@ formValidatorAddCards.enableValidation();
 function openPopup(evt) {
   evt.classList.add("popup_opened");
   document.addEventListener("keydown", closePopupEscape);
-  document.addEventListener("mousedown", closePopupOverlay);
+  evt.addEventListener("mousedown", closePopupOverlay);
 }
 
 function openBigImagePopup(link, name) {
@@ -120,7 +120,7 @@ function openBigImagePopup(link, name) {
 function closePopup(evt) {
   evt.classList.remove("popup_opened");
   document.removeEventListener("keydown", closePopupEscape);
-  document.removeEventListener("mousedown", closePopupOverlay);
+  evt.removeEventListener("mousedown", closePopupOverlay);
 }
 
 function closePopupOverlay(evt) {
@@ -168,7 +168,7 @@ function submissionFormAddCard(event) {
 // КНОПКИ
 elementOpenButtonProfile.addEventListener("click", () => {
   openPopup(elementEditProfilePopup);
-  saveProfileData();
+  // saveProfileData();
 });
 
 elementPopupEditForm.addEventListener("submit", submissionProfileForm);
@@ -192,13 +192,10 @@ function renderElements() {
   });
 }
 
-function openPopupAddCards() {
+elementAddCardsButton.addEventListener("click", () => {
   openPopup(elementAddCardsPopup);
+  formValidatorAddCards.resetValidation();
   formAddCards.reset();
-  const buttonSubmit = formAddCards.elements.save;
-  buttonSubmit.classList.add("popup__save-form_inactive");
-  buttonSubmit.setAttribute("disabled", true);
-}
-elementAddCardsButton.addEventListener("click", openPopupAddCards);
+});
 
 renderElements();
