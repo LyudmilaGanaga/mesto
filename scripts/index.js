@@ -106,7 +106,6 @@ formValidatorAddCards.enableValidation();
 function openPopup(evt) {
   evt.classList.add("popup_opened");
   document.addEventListener("keydown", closePopupEscape);
-  evt.addEventListener("mousedown", closePopupOverlay);
 }
 
 function openBigImagePopup(link, name) {
@@ -120,14 +119,15 @@ function openBigImagePopup(link, name) {
 function closePopup(evt) {
   evt.classList.remove("popup_opened");
   document.removeEventListener("keydown", closePopupEscape);
-  evt.removeEventListener("mousedown", closePopupOverlay);
 }
 
-function closePopupOverlay(evt) {
+document.addEventListener("click", function (evt) {
   if (evt.target.classList.contains("popup")) {
-    closePopup(evt.target);
+    evt.target.classList.remove("popup_opened");
+    const openPopup = document.querySelector(".popup_opened");
+    closePopup(openPopup);
   }
-}
+});
 
 function closePopupEscape(evt) {
   if (evt.key === "Escape") {
@@ -168,7 +168,7 @@ function submissionFormAddCard(event) {
 // КНОПКИ
 elementOpenButtonProfile.addEventListener("click", () => {
   openPopup(elementEditProfilePopup);
-  // saveProfileData();
+  saveProfileData();
 });
 
 elementPopupEditForm.addEventListener("submit", submissionProfileForm);
@@ -194,8 +194,8 @@ function renderElements() {
 
 elementAddCardsButton.addEventListener("click", () => {
   openPopup(elementAddCardsPopup);
-  formValidatorAddCards.resetValidation();
   formAddCards.reset();
+  formValidatorAddCards.resetValidation();
 });
 
 renderElements();
