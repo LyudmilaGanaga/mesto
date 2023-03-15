@@ -106,6 +106,8 @@ formValidatorAddCards.enableValidation();
 function openPopup(evt) {
   evt.classList.add("popup_opened");
   document.addEventListener("keydown", closePopupEscape);
+  popup.addEventListener("mousedown", closePopupOverlay);
+  popup.addEventListener('click', elementsCloseButton);
 }
 
 function openBigImagePopup(link, name) {
@@ -119,15 +121,9 @@ function openBigImagePopup(link, name) {
 function closePopup(evt) {
   evt.classList.remove("popup_opened");
   document.removeEventListener("keydown", closePopupEscape);
+  popup.removeEventListener("mousedown", closePopupOverlay);
+  popup.removeEventListener('click', elementsCloseButton);
 }
-
-document.addEventListener("click", function (evt) {
-  if (evt.target.classList.contains("popup")) {
-    evt.target.classList.remove("popup_opened");
-    const openPopup = document.querySelector(".popup_opened");
-    closePopup(openPopup);
-  }
-});
 
 function closePopupEscape(evt) {
   if (evt.key === "Escape") {
@@ -135,6 +131,29 @@ function closePopupEscape(evt) {
     closePopup(openPopup);
   }
 }
+
+// КНОПКИ
+elementOpenButtonProfile.addEventListener("click", () => {
+  openPopup(elementEditProfilePopup);
+  saveProfileData();
+});
+
+elementPopupEditForm.addEventListener("submit", submissionProfileForm);
+formAddCards.addEventListener("submit", submissionFormAddCard);
+
+elementsCloseButton.forEach(button => {
+  const popup = button.closest('.popup');
+  button.addEventListener('click', () => closePopup(popup)); 
+
+  popup.addEventListener('mousedown', (evt) => { 
+    if (evt.target.classList.contains('popup')) { 
+      closePopup(popup); 
+    }; 
+  });
+}) 
+
+
+
 // РАБОТА С ФОРМАМИ
 // Функция отображения заполненных данных пользователя в профиле и сохраняет их
 function saveProfileData() {
@@ -165,19 +184,6 @@ function submissionFormAddCard(event) {
   closePopup(elementAddCardsPopup);
 }
 
-// КНОПКИ
-elementOpenButtonProfile.addEventListener("click", () => {
-  openPopup(elementEditProfilePopup);
-  saveProfileData();
-});
-
-elementPopupEditForm.addEventListener("submit", submissionProfileForm);
-formAddCards.addEventListener("submit", submissionFormAddCard);
-
-elementsCloseButton.forEach((button) => {
-  const popup = button.closest(".popup");
-  button.addEventListener("click", () => closePopup(popup));
-});
 
 // КАРТОЧКИ
 function createCard(evt) {
