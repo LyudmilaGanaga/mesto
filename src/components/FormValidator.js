@@ -11,11 +11,11 @@ export default class FormValidator {
   }
 
   // проверка валидности
-  _checkInputValidity(evt) {
-    if (!evt.validity.valid) {
-      this._showInputError(evt);
+  _checkInputValidity(input) {
+    if (!input.validity.valid) {
+      this._showInputError(input);
     } else {
-      this._hideInputError(evt);
+      this._hideInputError(input);
     }
   }
   // проверка невалидности
@@ -26,18 +26,18 @@ export default class FormValidator {
   }
 
   // отображает ошибку
-  _showInputError(evt) {
-    const errorElement = this._formElement.querySelector(`.${evt.id}-error`);
+  _showInputError(input) {
+    const errorElement = this._formElement.querySelector(`.${input.id}-error`);
 
-    evt.classList.add(this._formValidation.inputErrorClass);
+    input.classList.add(this._formValidation.inputErrorClass);
     errorElement.classList.add(this._formValidation.errorClass);
-    errorElement.textContent = evt.validationMessage;
+    errorElement.textContent = input.validationMessage;
   }
 
-  _hideInputError(evt) {
-    const errorElement = this._formElement.querySelector(`.${evt.id}-error`);
+  _hideInputError(input) {
+    const errorElement = this._formElement.querySelector(`.${input.id}-error`);
 
-    evt.classList.remove(this._formValidation.inputErrorClass);
+    input.classList.remove(this._formValidation.inputErrorClass);
     errorElement.classList.remove(this._formValidation.errorClass);
     errorElement.textContent = "";
   }
@@ -61,9 +61,9 @@ export default class FormValidator {
   _setEventListeners() {
     this._toggleButtonState();
 
-    this._inputList.forEach((evt) => {
-      evt.addEventListener("input", () => {
-        this._checkInputValidity(evt);
+    this._inputList.forEach((input) => {
+      input.addEventListener("input", () => {
+        this._checkInputValidity(input);
         this._toggleButtonState();
       });
     });

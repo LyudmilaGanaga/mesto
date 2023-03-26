@@ -8,6 +8,7 @@ import {
   elementPopupEditForm,
   popupName,
   popupWorking,
+sectionCards
 } from "../utils/constants.js";
 
 // Импорт классов
@@ -37,8 +38,8 @@ const cardsList = new Section(
   ".elements__list"
 );
 const userInfo = new UserInfo(".profile__name", ".profile__working");
-const image = new PopupWithImage("#popup__image-big");
-image.setEventListeners();
+const popupImage = new PopupWithImage("#popup__image-big");
+popupImage.setEventListeners();
 
 const popupWithFormAddCards = new PopupWithForm(
   "#popup_new-cards",
@@ -46,8 +47,8 @@ const popupWithFormAddCards = new PopupWithForm(
 );
 popupWithFormAddCards.setEventListeners();
 
-const form = new PopupWithForm("#popup_edit-profile", submitUserData);
-form.setEventListeners();
+const popupForm = new PopupWithForm("#popup_edit-profile", submitUserData);
+popupForm.setEventListeners();
 
 elementAddCardsButton.addEventListener("click", openAddCard);
 elementOpenButtonProfile.addEventListener("click", openSaveProfileData);
@@ -66,12 +67,12 @@ function createCard(item) {
 }
 
 function handleCardClick(cardData) {
-  image.open(cardData);
+  popupImage.open(cardData);
 }
 
 function openSaveProfileData() {
   formValidatorEditProfileForm.resetValidation();
-  form.open();
+  popupForm.open();
   const userData = userInfo.getUserInfo();
 
   popupName.value = userData.name;
@@ -87,13 +88,11 @@ function submitUserData(userData) {
   userInfo.setUserInfo(userData);
 }
 
-function submitAddCardData(cardData) {
-  cardsList.addItem(
-    createCard({
-      name: cardData.name,
-      link: cardData.link,
-    })
-  );
-}
+function submitAddCardData(renderer) { 
+  cardsList.addItem(createCard({
+      name: renderer.place, 
+      link: renderer.link
+    }));
+  }
 
 cardsList.renderItems();

@@ -15,7 +15,7 @@ export default class PopupWithForm extends Popup {
     // добавляем в этот объект значения всех полей
     this._inputs.forEach((input) => {
       this._formValues[input.name] = input.value;
-      this._formValues[input.working] = input.value;
+      // this._formValues[input.working] = input.value;
     });
 
     // возвращаем объект значений
