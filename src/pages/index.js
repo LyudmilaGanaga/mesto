@@ -47,8 +47,8 @@ const popupWithFormAddCards = new PopupWithForm(
 );
 popupWithFormAddCards.setEventListeners();
 
-const popupForm = new PopupWithForm("#popup_edit-profile", submitUserData);
-popupForm.setEventListeners();
+const popupEditProfile = new PopupWithForm("#popup_edit-profile", submitUserData);
+popupEditProfile.setEventListeners();
 
 elementAddCardsButton.addEventListener("click", openAddCard);
 elementOpenButtonProfile.addEventListener("click", openSaveProfileData);
@@ -72,7 +72,7 @@ function handleCardClick(cardData) {
 
 function openSaveProfileData() {
   formValidatorEditProfileForm.resetValidation();
-  popupForm.open();
+  popupEditProfile.open();
   const userData = userInfo.getUserInfo();
 
   popupName.value = userData.name;
@@ -88,11 +88,18 @@ function submitUserData(userData) {
   userInfo.setUserInfo(userData);
 }
 
-function submitAddCardData(renderer) { 
-  cardsList.addItem(createCard({
-      name: renderer.place, 
-      link: renderer.link
-    }));
-  }
+// function submitAddCardData(renderer) { 
+//   cardsList.addItem(createCard({
+//       name: renderer.place, 
+//       link: renderer.link
+//     }));
+//   }
+
+function submitAddCardData(cardData) {
+  renderer({ 
+      name: cardData.place,  
+      link: cardData.link 
+    });
+}
 
 cardsList.renderItems();
