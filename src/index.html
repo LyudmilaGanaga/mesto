@@ -15,12 +15,13 @@
   </header>
 
   <main class="content">
+
     <section class="profile">
       <img class="profile__avatar" src="<%=require('./images/image.png')%>" alt="Аватар">
+      <button class="profile__avatar-button" type="button"></button>
       <div class="profile__info">
         <h1 class="profile__name">Жак-Ив Кусто</h1>
         <button class="profile__edit-button" type="button"></button>
-        
         <p class="profile__working">Исследователь океана</p>
       </div>
       <button class="profile__add-button" type="button"></button>
@@ -38,62 +39,99 @@
     <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
   </footer>
 
-  <div class="popup" id="popup_edit-profile">
+  <!-- Popup  редактирования профиля -->
+  <section class="popup popup_edit-profile" id="popup_edit-profile">
     <div class="popup__container">
       <button class="popup__close-button" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form popup__edit-form" id="form-edit" name="popup-edit-profile" novalidate>
+      <form class="popup__form popup__edit-form" action="#" method="post" id="form-edit" name="popup-edit-profile"
+        novalidate>
 
-        <input class="popup__input  popup__input_data_name" id="username" name="name" placeholder="Имя" type="text" minlength="2"
-          maxlength="40" required>
-        <span class="popup__input-error username-error"></span>
-        
-        <input class="popup__input popup__input_data_working" id="userworking" name="working" placeholder="Вид деятельности" type="text"
-          minlength="2" maxlength="200" required>
-        <span class="popup__input-error userworking-error"></span>
+        <input class="popup__input popup__input_data_name" id="name" name="name" placeholder="Имя" type="text"
+          minlength="2" maxlength="40" required>
+        <span class="popup__input-error name-error" id="popup__input-error-name"></span>
+
+        <input class="popup__input popup__input_data_about" id="about" name="about" placeholder="Вид деятельности"
+          type="text" minlength="2" maxlength="200" required>
+        <span class="popup__input-error about-error" id="popup__input-error-about"></span>
 
         <button class="popup__save-form" type="submit" aria-label="Сохранение изменений">Сохранить</button>
       </form>
     </div>
-  </div>
+  </section>
 
-  <div class="popup" id="popup_new-cards">
+  <!-- Popup карточки -->
+  <section class="popup popup_new-cards" id="popup_new-cards">
     <div class="popup__container">
       <button class="popup__close-button" type="button" aria-label="Закрыть всплывающее окно"></button>
       <h2 class="popup__title">Новое место</h2>
       <form class="popup__form popup__form-cards" id="form-cards" name="name" novalidate>
-        <input class="popup__input popup__input_data_place" id="place" type="text" name="place" minlength="2" maxlength="30"
-          placeholder="Название" required>
-        <span class="popup__input-error place-error"></span>
-        <input class="popup__input popup__input_data_link" id="link" type="url" name="link"
+        <input class="popup__input popup__input_data_name" id="name" type="text" name="name" minlength="2"
+          maxlength="30" placeholder="Название" required>
+        <span class="popup__input-error name-error"></span>
+        <input class="popup__input popup__input_data_link" id="link" type="link" name="link"
           placeholder="Ссылка на картинку" required>
         <span class="popup__input-error link-error"></span>
-        <button class="popup__save-form popup__save-form_inactive" name="save" type="submit" aria-label="Сохранение изменений"
-        >Создать</button>
+        <button class="popup__save-form popup__save-form_inactive" name="save" type="submit"
+          aria-label="Сохранение изменений">Создать</button>
       </form>
     </div>
-  </div>
+  </section>
 
-  <div class="popup popup_background-black" id="popup__image-big">
+  <!-- Popup аватар -->
+  <section class="popup popup_edit-avatar" id="popup_edit-avatar">
+    <div class="popup__container">
+      <button class="popup__close-button" type="button"></button>
+      <h2 class="popup__title">Обновить аватар</h2>
+      <form class="popup__form popup__form-avatar" id="form-edit" name="popup-edit-avatar" novalidate>
 
+        <input id="useravatar" class="popup__input popup__input_data_avatar" name="avatar"
+          placeholder="Ссылка на картинку" type="url" required>
+        <span class="popup__input-error useravatar-error"></span>
+
+        <button class="popup__save-form" type="submit" aria-label="Сохранение изменений">Сохранить</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Popup большое изображение -->
+  <section class="popup popup_background-black popup__image-big" id="popup__image-big">
     <figure class="popup__image-container">
       <button class="popup__close-button" type="button" aria-label="Закрытие всплывающего окна"></button>
       <img class="popup__image" src="#" alt="">
       <figcaption class="popup__image-text"></figcaption>
     </figure>
-  </div>
+  </section>
 
-  <template id="card-template">
+  <!-- Popup подтверждение удаления карточки -->
+  <section class="popup popup__confirm" id="popup_delete-card">
+    <div class="popup__container">
+      <button class="popup__close-button" type="button" ></button>
+      <form class="popup__form popup__form-delete" id="form-delete" name="popup-delete-card" novalidate>
+        <h2 class="popup__title">Вы уверены?</h2>
+        <button class="popup__save-form" type="submit" aria-label="Подтверждение удаления">
+          Да
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!--Template  -->
+  <template class="card-template" id="card-template">
     <li class="element">
       <button class="element__delete" type="button"></button>
       <img class="element__image" src="#" alt="">
       <div class="element__group">
         <h2 class="element__text"></h2>
-        <button class="element__like" type="button"></button>
+        <div class="element__counter">
+          <button class="element__like" type="button"></button>
+          <p class="element__likes">0</p>
+        </div>
+      </div>
       </div>
     </li>
   </template>
-  
+
 </body>
 
 </html>

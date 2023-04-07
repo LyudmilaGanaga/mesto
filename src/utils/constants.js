@@ -1,30 +1,3 @@
-export const initialCards = [
-  {
-    name: "Камчатка",
-    link: "https://images.unsplash.com/photo-1536855077928-3ac6ca7741b7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=948&q=80",
-  },
-  {
-    name: "Эстосадок",
-    link: "https://images.unsplash.com/photo-1595954011025-b4a68c838562?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=726&q=80",
-  },
-  {
-    name: "Ольхон",
-    link: "https://images.unsplash.com/photo-1614357932292-a38393b966a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80",
-  },
-  {
-    name: "Гижгит",
-    link: "https://images.unsplash.com/photo-1631181089058-3cb4bf9b237b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80",
-  },
-  {
-    name: "Липецк",
-    link: "https://images.unsplash.com/photo-1592036496319-b3f8d048021e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80",
-  },
-  {
-    name: "Телецкое озеро",
-    link: "https://images.unsplash.com/photo-1596003903067-bf5762ad5c19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80",
-  },
-];
-
 export const formValidation = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
@@ -33,17 +6,58 @@ export const formValidation = {
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__input-error_visible",
 };
-
-// ПОПАПЫ
+// -----------------------------------------------------------------------------------
+// ПРОФИЛЬ
 // попап профиль
 export const elementEditProfilePopup = document.querySelector(
-  "#popup_edit-profile"
+  ".popup_edit-profile"
 );
+export const elementPopupEditForm = document.querySelector(".popup__edit-form");
+// инпуты попап профиля
+export const popupName = elementEditProfilePopup.querySelector(
+  ".popup__input_data_name"
+);
+export const popupWorking = elementEditProfilePopup.querySelector(
+  ".popup__input_data_about"
+);
+export const profileInfo = document.querySelector(".profile__info");
+// заполнения формы профиля
+export const elementProfileName = profileInfo.querySelector(".profile__name");
+export const elementProfileWorking =
+  profileInfo.querySelector(".profile__working");
+export const elementProfileAvatar = document.querySelector(".profile__avatar");
+// -----------------------------------------------------------------------------------
+// АВАТАР
+// попап аватара
+export const popupAvatar = document.querySelector(".popup_edit-avatar");
+// форма аватара
+export const elementAvatarForm = document.querySelector(".popup__form-avatar");
+// -----------------------------------------------------------------------------------
+// КАРТОЧКИ
+//секция с карточками
+export const sectionCards = document.querySelector(".elements__list");
 // попап добавление карточки
-export const elementAddCardsPopup = document.querySelector("#popup_new-cards");
+export const elementAddCardsPopup = document.querySelector(".popup_new-cards");
+// форма добавления карточки
+export const formAddCards = document.querySelector(".popup__form-cards");
+// инпуты попапа добавления карточки
+export const popupDataPlace = elementAddCardsPopup.querySelector(
+  ".popup__input_data_name"
+);
+export const popupDataLink = elementAddCardsPopup.querySelector(
+  ".popup__input_data_link"
+);
+// -----------------------------------------------------------------------------------
 // попап большое изображние
-export const elementBigImagePopup = document.querySelector("#popup__image-big");
-
+export const elementBigImagePopup = document.querySelector(".popup__image-big");
+// увеличение изображения карточки
+export const bigImage = elementBigImagePopup.querySelector(".popup__image");
+export const bigImageCaption =
+  elementBigImagePopup.querySelector(".popup__image-text");
+// -----------------------------------------------------------------------------------
+// ПОПАП УДАЛЕНИЕ КАРТОЧКИ
+export const popupConfirm = document.querySelector(".popup__confirm");
+// -----------------------------------------------------------------------------------
 // КНОПКИ
 // кнопка редактировать профиль
 export const elementOpenButtonProfile = document.querySelector(
@@ -57,40 +71,7 @@ export const elementsCloseButton = document.querySelectorAll(
 export const elementAddCardsButton = document.querySelector(
   ".profile__add-button"
 );
-
-// КАРТОЧКИ
-//секция с карточками
-export const sectionCards = document.querySelector(".elements__list");
-// увеличение изображения карточки
-export const bigImage = elementBigImagePopup.querySelector(".popup__image");
-export const bigImageCaption =
-  elementBigImagePopup.querySelector(".popup__image-text");
-
-// ФОРМЫ
-// форма профиля
-export const elementPopupEditForm =
-  elementEditProfilePopup.querySelector(".popup__edit-form");
-// форма добавления карточки
-export const formAddCards =
-  elementAddCardsPopup.querySelector(".popup__form-cards");
-// заполнения формы профиля
-export const elementProfileName = document.querySelector(".profile__name");
-export const elementProfileWorking =
-  document.querySelector(".profile__working");
-
-// ИНПУТЫ
-// инпуты попап профиля
-export const popupName = elementEditProfilePopup.querySelector(
-  ".popup__input_data_name"
+// кнопка аватара
+export const elementOpenButtonAvatar = document.querySelector(
+  ".profile__avatar-button"
 );
-export const popupWorking = elementEditProfilePopup.querySelector(
-  ".popup__input_data_working"
-);
-// инпуты попапа добавления карточки
-export const popupDataPlace = elementAddCardsPopup.querySelector(
-  ".popup__input_data_place"
-);
-export const popupDataLink = elementAddCardsPopup.querySelector(
-  ".popup__input_data_link"
-);
-  
