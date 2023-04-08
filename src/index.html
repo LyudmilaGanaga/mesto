@@ -69,7 +69,7 @@
         <input class="popup__input popup__input_data_name" id="input-name" type="text" name="name" minlength="2"
           maxlength="30" placeholder="Название" required>
         <span class="popup__input-error input-name-error"></span>
-        <input class="popup__input popup__input_data_link" id="link" type="link" name="link"
+        <input class="popup__input popup__input_data_link" id="link" type="url" name="link"
           placeholder="Ссылка на картинку" required>
         <span class="popup__input-error link-error"></span>
         <button class="popup__save-form popup__save-form_inactive" name="save" type="submit"
@@ -95,7 +95,7 @@
   </section>
 
   <!-- Popup большое изображение -->
-  <section class="popup popup_background-black popup__image-big" id="popup__image-big">
+  <section class="popup popup_background-black popup_image-big" id="popup__image-big">
     <figure class="popup__image-container">
       <button class="popup__close-button" type="button" aria-label="Закрытие всплывающего окна"></button>
       <img class="popup__image" src="#" alt="">
@@ -104,7 +104,7 @@
   </section>
 
   <!-- Popup подтверждение удаления карточки -->
-  <section class="popup popup__confirm" id="popup_delete-card">
+  <section class="popup popup_confirm" id="popup_delete-card">
     <div class="popup__container">
       <button class="popup__close-button" type="button" ></button>
       <form class="popup__form popup__form-delete" id="form-delete" name="popup-delete-card" novalidate>

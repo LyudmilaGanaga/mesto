@@ -49,14 +49,14 @@ export const popupDataLink = elementAddCardsPopup.querySelector(
 );
 // -----------------------------------------------------------------------------------
 // попап большое изображние
-export const elementBigImagePopup = document.querySelector(".popup__image-big");
+export const elementBigImagePopup = document.querySelector(".popup_image-big");
 // увеличение изображения карточки
 export const bigImage = elementBigImagePopup.querySelector(".popup__image");
 export const bigImageCaption =
   elementBigImagePopup.querySelector(".popup__image-text");
 // -----------------------------------------------------------------------------------
 // ПОПАП УДАЛЕНИЕ КАРТОЧКИ
-export const popupConfirm = document.querySelector(".popup__confirm");
+export const popupConfirm = document.querySelector(".popup_confirm");
 // -----------------------------------------------------------------------------------
 // КНОПКИ
 // кнопка редактировать профиль
