@@ -66,9 +66,9 @@
       <button class="popup__close-button" type="button" aria-label="Закрыть всплывающее окно"></button>
       <h2 class="popup__title">Новое место</h2>
       <form class="popup__form popup__form-cards" id="form-cards" name="name" novalidate>
-        <input class="popup__input popup__input_data_name" id="name" type="text" name="name" minlength="2"
+        <input class="popup__input popup__input_data_name" id="input-name" type="text" name="name" minlength="2"
           maxlength="30" placeholder="Название" required>
-        <span class="popup__input-error name-error"></span>
+        <span class="popup__input-error input-name-error"></span>
         <input class="popup__input popup__input_data_link" id="link" type="link" name="link"
           placeholder="Ссылка на картинку" required>
         <span class="popup__input-error link-error"></span>
@@ -83,7 +83,7 @@
     <div class="popup__container">
       <button class="popup__close-button" type="button"></button>
       <h2 class="popup__title">Обновить аватар</h2>
-      <form class="popup__form popup__form-avatar" id="form-edit" name="popup-edit-avatar" novalidate>
+      <form class="popup__form popup__form-avatar" id="form-edit-avatar" name="popup-edit-avatar" novalidate>
 
         <input id="useravatar" class="popup__input popup__input_data_avatar" name="avatar"
           placeholder="Ссылка на картинку" type="url" required>
@@ -128,7 +128,7 @@
           <p class="element__likes">0</p>
         </div>
       </div>
-      </div>
+
     </li>
   </template>
 
